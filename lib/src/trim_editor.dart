@@ -7,169 +7,26 @@ import 'package:video_trimmer/src/trim_editor_painter.dart';
 import 'package:video_trimmer/src/trimmer.dart';
 
 class TrimEditor extends StatefulWidget {
-  /// The Trimmer instance controlling the data.
   final Trimmer trimmer;
-
-  /// For defining the total trimmer area width
   final double viewerWidth;
-
-  /// For defining the total trimmer area height
   final double viewerHeight;
-
-  /// For defining the image fit type of each thumbnail image.
-  ///
-  /// By default it is set to `BoxFit.fitHeight`.
   final BoxFit fit;
-
-  /// For defining the maximum length of the output video.
   final Duration maxVideoLength;
-
-  /// For specifying a size to the holder at the
-  /// two ends of the video trimmer area, while it is `idle`.
-  ///
-  /// By default it is set to `5.0`.
   final double circleSize;
-
-  /// For specifying the width of the border around
-  /// the trim area. By default it is set to `3`.
   final double borderWidth;
-
-  /// For specifying the width of the video scrubber
   final double scrubberWidth;
-
-  /// For specifying a size to the holder at
-  /// the two ends of the video trimmer area, while it is being
-  /// `dragged`.
-  ///
-  /// By default it is set to `8.0`.
   final double circleSizeOnDrag;
-
-  /// For specifying a color to the circle.
-  ///
-  /// By default it is set to `Colors.white`.
   final Color circlePaintColor;
-
-  /// For specifying a color to the border of
-  /// the trim area.
-  ///
-  /// By default it is set to `Colors.white`.
   final Color borderPaintColor;
-
-  /// For specifying a color to the video
-  /// scrubber inside the trim area.
-  ///
-  /// By default it is set to `Colors.white`.
   final Color scrubberPaintColor;
-
-  /// For specifying the quality of each
-  /// generated image thumbnail, to be displayed in the trimmer
-  /// area.
   final int thumbnailQuality;
-
-  /// For showing the start and the end point of the
-  /// video on top of the trimmer area.
-  ///
-  /// By default it is set to `true`.
   final bool showDuration;
-
-  /// For providing a `TextStyle` to the
-  /// duration text.
-  ///
-  /// By default it is set to `TextStyle(color: Colors.white)`
   final TextStyle durationTextStyle;
-
-  /// Callback to the video start position
-  ///
-  /// Returns the selected video start position in `milliseconds`.
   final Function(double startValue)? onChangeStart;
-
-  /// Callback to the video end position.
-  ///
-  /// Returns the selected video end position in `milliseconds`.
   final Function(double endValue)? onChangeEnd;
-
-  /// Callback to the video playback
-  /// state to know whether it is currently playing or paused.
-  ///
-  /// Returns a `boolean` value. If `true`, video is currently
-  /// playing, otherwise paused.
   final Function(bool isPlaying)? onChangePlaybackState;
-
-  /// Determines the touch size of the side handles, left and right. The rest, in
-  /// the center, will move the whole frame if [maxVideoLength] is inferior to the
-  /// total duration of the video.
   final int sideTapSize;
 
-  /// Widget for displaying the video trimmer.
-  ///
-  /// This has frame wise preview of the video with a
-  /// slider for selecting the part of the video to be
-  /// trimmed.
-  ///
-  /// The required parameters are [viewerWidth] & [viewerHeight]
-  ///
-  /// * [viewerWidth] to define the total trimmer area width.
-  ///
-  ///
-  /// * [viewerHeight] to define the total trimmer area height.
-  ///
-  ///
-  /// The optional parameters are:
-  ///
-  /// * [fit] for specifying the image fit type of each thumbnail image.
-  /// By default it is set to `BoxFit.fitHeight`.
-  ///
-  ///
-  /// * [maxVideoLength] for specifying the maximum length of the
-  /// output video.
-  ///
-  ///
-  /// * [circleSize] for specifying a size to the holder at the
-  /// two ends of the video trimmer area, while it is `idle`.
-  /// By default it is set to `5.0`.
-  ///
-  ///
-  /// * [circleSizeOnDrag] for specifying a size to the holder at
-  /// the two ends of the video trimmer area, while it is being
-  /// `dragged`. By default it is set to `8.0`.
-  ///
-  ///
-  /// * [circlePaintColor] for specifying a color to the circle.
-  /// By default it is set to `Colors.white`.
-  ///
-  ///
-  /// * [borderPaintColor] for specifying a color to the border of
-  /// the trim area. By default it is set to `Colors.white`.
-  ///
-  ///
-  /// * [scrubberPaintColor] for specifying a color to the video
-  /// scrubber inside the trim area. By default it is set to
-  /// `Colors.white`.
-  ///
-  ///
-  /// * [thumbnailQuality] for specifying the quality of each
-  /// generated image thumbnail, to be displayed in the trimmer
-  /// area.
-  ///
-  ///
-  /// * [showDuration] for showing the start and the end point of the
-  /// video on top of the trimmer area. By default it is set to `true`.
-  ///
-  ///
-  /// * [durationTextStyle] is for providing a `TextStyle` to the
-  /// duration text. By default it is set to
-  /// `TextStyle(color: Colors.white)`
-  ///
-  ///
-  /// * [onChangeStart] is a callback to the video start position.
-  ///
-  ///
-  /// * [onChangeEnd] is a callback to the video end position.
-  ///
-  ///
-  /// * [onChangePlaybackState] is a callback to the video playback
-  /// state to know whether it is currently playing or paused.
-  ///
   const TrimEditor({
     Key? key,
     required this.trimmer,
